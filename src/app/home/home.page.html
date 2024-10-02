@@ -1,7 +1,7 @@
 <!-- Header -->
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
+    <ion-title #titulo>
       Home
     </ion-title>
   </ion-toolbar>
@@ -11,38 +11,21 @@
 
 <!-- Comienza el Content -->
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Usuario {{user.usuario}}</ion-card-subtitle>
-      <ion-card-title>Bienvenido</ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      <ion-card-title>Informacion Adicional</ion-card-title>
-      <ion-item>
-        <ion-input label="Nombre" label-placement="fixed" [(ngModel)]="nombre" placeholder="Ingrese nombre"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input label="Apellido" label-placement="fixed" [(ngModel)]="apellido" placeholder="Ingrese apellido"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-select label="Nivel Educacional" [(ngModel)]="nivel_educacional" placeholder="Seleccione Nivel">
-          <ion-select-option value="Basica">Basica</ion-select-option>
-          <ion-select-option value="Media">Media</ion-select-option>
-          <ion-select-option value="Superior">Superior</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-input label="Fecha Nacimiento" [(ngModel)]="fecha_nacimiento" type="date"></ion-input>
-      </ion-item>
-      <ion-row>
-        <ion-col>
-          <ion-button (click)="limpiar()">Limpiar</ion-button>
-          <ion-button (click)="presentAlert()">Mostrar</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+  <ion-segment (ionChange)="onChangeSegment($event)" value="buttons">
+    <ion-segment-button value="experienciaLaboral" >
+      <ion-label>Experiencia Laboral</ion-label>      
+    </ion-segment-button>
+    <ion-segment-button value="certificaciones">
+      <ion-label>Certificaciones</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="misDatos">
+      <ion-label>Mis Datos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <app-experiencia-laboral *ngIf="segment === 'experienciaLaboral'"></app-experiencia-laboral>
+  <app-certificaciones *ngIf="segment === 'certificaciones'"></app-certificaciones>
+  <app-mis-datos *ngIf="segment === 'misDatos'"></app-mis-datos>
+  <router-outlet></router-outlet>
 
 </ion-content>
 <!-- Fin Content -->

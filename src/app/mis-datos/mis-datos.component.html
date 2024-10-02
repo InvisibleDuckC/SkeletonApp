@@ -1,0 +1,32 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Usuario {{user.usuario}}</ion-card-subtitle>
+    <ion-card-title>Bienvenido</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-card-title>Informacion Adicional</ion-card-title>
+    <ion-item>
+      <ion-input #nombre_ label="Nombre" label-placement="fixed" [(ngModel)]="nombre" placeholder="Ingrese nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input #apellido_ label="Apellido" label-placement="fixed" [(ngModel)]="apellido" placeholder="Ingrese apellido"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select label="Nivel Educacional" [(ngModel)]="nivel_educacional" placeholder="Seleccione Nivel">
+        <ion-select-option value="Basica">Basica</ion-select-option>
+        <ion-select-option value="Media">Media</ion-select-option>
+        <ion-select-option value="Superior">Superior</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+          
+    </ion-item>
+    <ion-row>
+      <ion-col>
+<!--         <ion-button (click)="limpiar()">Limpiar</ion-button> -->
+        <ion-button (click)="presentAlert()">Mostrar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>

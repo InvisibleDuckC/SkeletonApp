@@ -1,0 +1,46 @@
+<ion-card class="ion-text-center">
+  <ion-card-header>
+    <ion-card-title>Experiencia Laboral</ion-card-title>
+    <ion-card-subtitle>Usuario {{user.usuario}}</ion-card-subtitle>
+  </ion-card-header>  
+  <ion-card-content>
+    <ion-list>
+      <ion-item >
+        <ion-input #nombre_ label="Empresa" [(ngModel)]="empresa" placeholder="Ingrese Empresa"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="fixed">Fecha Inicio</ion-label>
+        <ion-datetime-button datetime="ano_inicio" [(ngModel)]="ano_inicio"></ion-datetime-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-select justify="start" label="Si actualmente trabaja ahí" [(ngModel)]="actualmente" placeholder="Seleccionar">
+          <ion-select-option value="SI">Si</ion-select-option>
+          <ion-select-option value="NO">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngIf="actualmente == 'NO'">
+        <ion-label position="fixed">Año Termino</ion-label>
+        <ion-datetime-button datetime="ano_termino" [(ngModel)]="ano_termino"></ion-datetime-button>
+      </ion-item>
+
+      <ion-item >
+        <ion-input #cargo_ label="Cargo" [(ngModel)]="cargo" placeholder="Ingrese Cargo"></ion-input>
+      </ion-item>
+  </ion-list>
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime presentation="year" id="ano_inicio"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime presentation="year" id="ano_termino"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+  </ion-card-content>
+</ion-card>
